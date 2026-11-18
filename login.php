@@ -133,8 +133,9 @@ $page_title = 'Login';
                             id="usernameInput" 
                             value="" 
                             placeholder="Masukan username" 
-                            autocomplete="on"
+                            autocomplete="off"
                             required
+                            autofocus
                             class="w-full bg-transparent px-3 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none">
                     </div>
                 </div>
