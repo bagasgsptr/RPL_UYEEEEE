@@ -1,68 +1,35 @@
-# Aplikasi Peminjaman dan Pengembalian Barang (RPL)
+# Aplikasi Peminjaman dan Pengembalian Barang
 
-Aplikasi web modern berbasis **PHP Native** dan antarmuka responsif mobile-first yang dibangun sesuai spesifikasi desain.
+Aplikasi web berbasis PHP Native dan MySQL untuk mencatat serta memantau transaksi peminjaman dan pengembalian inventaris barang. Proyek ini disusun sebagai tugas mata kuliah **Rekayasa Perangkat Lunak (RPL)**.
 
----
+## Deskripsi Singkat
 
-## 🎯 Fitur & Penyesuaian Sesuai Arahan
+Sistem ini menggantikan pencatatan manual dengan alur pengajuan dan persetujuan terstruktur antara peminjam (User) dan pengelola inventaris (Admin). Tampilan dirancang *mobile-first* agar nyaman diakses melalui ponsel maupun desktop.
 
-1. **Form Login:**
-   - Semua kolom input (`Username` & `Password`) dibuat **kosong secara default**.
-   - Dilengkapi placeholder, ikon pelindung, tombol intip/sembunyikan password (eye toggle), serta link lupa password dan hubungi admin.
-2. **Dashboard Dinamis:**
-   - Nama pengguna yang sedang login langsung tertera di bagian atas dashboard (*"Halo, [Nama] 👋"*).
-   - Menampilkan tanggal aktif format Indonesia.
-   - Ringkasan aktivitas barang yang sedang dipinjam.
-   - Akses cepat kategori barang (Laptop, Proyektor).
-   - Histori peminjaman terbaru dengan status badge (*Disetujui*, *Ditolak*, *Dikembalikan*, *Menunggu*).
-3. **Lonceng Notifikasi:**
-   - Terletak di pojok kanan atas dashboard dengan indikator unread.
-   - Klik lonceng untuk membuka popup daftar pemberitahuan (pemberitahuan persetujuan peminjaman, barang menunggu, jatuh tempo, dll.).
-   - Tombol cepat untuk menandai semua notifikasi telah dibaca.
-4. **Peminjaman (Katalog & Pengajuan):**
-   - Kolom pencarian barang langsung (*real-time filter*).
-   - Filter chip kategori: *Semua*, *Elektronik*, *Alat kantor*, *Aksesori*.
-   - Modal pengajuan pinjam dengan pemilihan tanggal rencana kembali, jumlah unit, dan alasan peminjaman.
-5. **Pengembalian Barang:**
-   - Tab pemisah *Dipinjam* dan *Diajukan*.
-   - Banner peringatan barang yang mendekati waktu jatuh tempo.
-   - Tombol aksi pengembalian barang disertai konfirmasi kondisi fisik barang.
-6. **Profil Sederhana (Simple Profile):**
-   - Fokus khusus pada pengetahuan identitas akun (Nama Lengkap, Jabatan/Role, ID Karyawan/NISN, Email kantor, serta ringkasan total pinjam & kembali).
-   - Fitur **Ganti Foto Profil** (upload berkas gambar JPG/PNG).
-   - Fitur **Ganti Password** (verifikasi password lama, password baru, dan konfirmasi).
-   - Tombol keluar (*Logout*).
-7. **Mode Admin (Persetujuan & Manajemen Karyawan):**
-   - Halaman **Persetujuan** (`persetujuan.php`): Meninjau permohonan pinjam karyawan (Setujui / Tolak dengan alasan).
-   - Halaman **Data Barang** (`admin_barang.php`): Mengelola dan menambah stok sarana/barang.
-   - Halaman **Akun Karyawan** (`admin_karyawan.php`): Tambah akun baru, acak ID karyawan, edit data divisi/jabatan, reset password, dan hapus akun karyawan.
+## Fitur Aplikasi
 
----
+**Pengguna (User):**
+- **Login & Profil:** Form masuk dengan tombol tampil/sembunyikan password, pembaruan foto profil (JPG/PNG), dan ganti password.
+- **Dashboard:** Menampilkan sapaan pengguna aktif, tanggal format Indonesia, ringkasan barang yang sedang dipinjam, pintasan kategori (Laptop, Proyektor), serta riwayat transaksi beserta statusnya (*Menunggu*, *Disetujui*, *Ditolak*, *Dikembalikan*).
+- **Notifikasi:** Ikon lonceng dengan penanda belum dibaca untuk info status persetujuan dan pengingat jatuh tempo.
+- **Katalog & Pengajuan Pinjam:** Pencarian barang secara langsung, filter kategori (*Semua*, *Elektronik*, *Alat kantor*, *Aksesori*), serta form modal untuk menentukan jumlah unit, tanggal rencana kembali, dan keperluan peminjaman.
+- **Pengembalian Barang:** Pemisahan tab *Dipinjam* dan *Diajukan*, peringatan mendekati jatuh tempo, serta konfirmasi kondisi fisik barang saat dikembalikan.
 
-## 🚀 Cara Menjalankan Proyek
+**Administrator (Admin):**
+- **Persetujuan (`persetujuan.php`):** Meninjau pengajuan peminjaman masuk untuk disetujui atau ditolak disertai alasan.
+- **Data Barang (`admin_barang.php`):** Menambah, mengubah, dan mengelola ketersediaan stok barang.
+- **Akun Karyawan (`admin_karyawan.php`):** Menambah akun baru, generate ID karyawan, mengatur divisi/jabatan, reset password, dan menghapus akun.
 
-### Cara 1: Menggunakan PHP Built-in Server (Langsung Jalan tanpa install DB manual)
-Sistem dilengkapi otomatis dengan fallback **SQLite** dan seeder data awal, sehingga Anda bisa langsung menjalankannya lewat terminal:
+## Teknologi yang Digunakan
+
+- **Backend:** PHP Native
+- **Database:** MySQL (tersedia juga mode *fallback* SQLite untuk pengujian cepat)
+- **Frontend:** HTML, CSS, JavaScript
+
+## Instalasi dan Cara Menjalankan
+
+### Opsi 1: PHP Built-in Server (SQLite)
+Dapat dijalankan langsung tanpa konfigurasi database manual karena sudah dilengkapi *seeder* data awal:
 
 ```bash
 php -S localhost:8000
-```
-Buka browser di alamat: [http://localhost:8000](http://localhost:8000)
-
-### Cara 2: Menggunakan XAMPP / Laragon (MySQL)
-1. Nyalakan modul **Apache** dan **MySQL** di XAMPP Control Panel.
-2. Buka **phpMyAdmin** (`http://localhost/phpmyadmin`).
-3. Buat database baru bernama `peminjaman_barang`.
-4. Import berkas SQL yang ada di: `database/database.sql`.
-5. Sesuaikan konfigurasi user & password database di `config/database.php` jika diperlukan (default: user `root`, password `""`).
-
----
-
-## 🔑 Akun Uji Coba (Demo Accounts)
-
-| Username | Password | Role | Keterangan |
-| :--- | :--- | :--- | :--- |
-| `bagas` | `123456` | User | Akun User / Karyawan IT |
-| `admin` | `123456` | Admin | Akun Administrator |
-
-*(Catatan: Kata sandi `password` juga dapat digunakan).*
