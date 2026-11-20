@@ -119,7 +119,7 @@ require_once __DIR__ . '/includes/header.php';
                         </span>
                         <span class="text-xs text-blue-200 font-medium">Menunggu persetujuan</span>
                     </div>
-                </div>
+               </div>
                 <a href="persetujuan.php" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-all shadow-md flex items-center gap-1.5">
                     <span>Tinjau</span>
                     <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
